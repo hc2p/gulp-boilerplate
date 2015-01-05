@@ -14,10 +14,10 @@
     "url": "https://github.com/charltoons/gulp-static-boilerplate/issues"
   },
   "devDependencies": {
-    "gulp": "~3.2.4",
-    "gulp-sass": "~0.2.3",
-    "gulp-coffee": "~1.2.5",
-    "gulp-jade": "~0.3.0",
-    "gulp-util": "~2.2.6"
+    "gulp": "~3.8.10",
+    "gulp-sass": "~1.2.4",
+    "gulp-coffee": "~2.2.0",
+    "gulp-jade": "~0.10.0",
+    "gulp-util": "~3.0.1"
   }
 }

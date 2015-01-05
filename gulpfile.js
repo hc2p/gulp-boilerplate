@@ -17,13 +17,12 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('build/js'));
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', ['normalize'], function() {
     gulp.src(['src/sass/**/*.scss'])
         .pipe(sass().on('error', function(err){
             gutil.log(gutil.colors.red('Error in SASS syntax'));
         }))
         .pipe(gulp.dest('build/css'));
-    gulp.run('normalize');
 });
 
 gulp.task('content', function(){
@@ -32,8 +31,7 @@ gulp.task('content', function(){
 });
 
 
-gulp.task('default', function() {
-  gulp.run('scripts', 'styles', 'content');
+gulp.task('default', ['scripts', 'styles', 'content'], function() {
 
   gulp.watch('src/coffee/**', function(event) {
     gulp.run('scripts');
