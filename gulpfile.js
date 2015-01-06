@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
-var jade = require('gulp-jade');
+var sourcemaps = require('gulp-sourcemaps');
+var concat = require('gulp-concat');
 var gutil = require('gulp-util');
 
 gulp.task('normalize', function(){
@@ -11,9 +12,12 @@ gulp.task('normalize', function(){
 
 gulp.task('scripts', function() {
     gulp.src(['src/coffee/**/*.coffee'])
-        .pipe(coffee().on('error', function(err){
+        .pipe(sourcemaps.init())
+        .pipe(coffee({bare: true}).on('error', function(err){
             gutil.log(gutil.colors.red(err))
         }))
+        .pipe(concat('app.js'))
+        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('build/js'));
 });
 
